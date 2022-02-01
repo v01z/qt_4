@@ -31,7 +31,7 @@
     <message>
         <location filename="mainwindow.ui" line="78"/>
         <source>Open read only</source>
-        <translation type="unfinished">Открыть для чтения</translation>
+        <translation type="unfinished">Открыть только для чтения</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="83"/>
@@ -86,7 +86,7 @@
     <message>
         <location filename="mainwindow.cpp" line="15"/>
         <source>Открыть &quot;для чтения&quot;</source>
-        <translation type="unfinished">Открыть для чтения</translation>
+        <translation type="unfinished">Открыть только для чтения</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="16"/>
@@ -127,6 +127,11 @@
         <location filename="mainwindow.cpp" line="25"/>
         <source>Помощь</source>
         <translation type="unfinished">Помощь</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="43"/>
+        <source>Choose file to open</source>
+        <translation type="unfinished">Выберите файл для открытия</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="44"/>

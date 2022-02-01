@@ -40,8 +40,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionOpen_triggered()
 {
     QString filePath { QFileDialog::getOpenFileName(this,
-        "Choose file to open", QDir::current().path(),
-            trUtf8("Text file(*.txt)")) };
+        tr("Choose file to open"), QDir::current().path(),
+            tr("Text file(*.txt)")) };
 
     if (filePath.length())
     {
@@ -177,6 +177,7 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::on_actionHelp_triggered()
 {
 
+    /*
     if (file->isOpen()) file->close();
 
     QString filePath { ":help.txt" };
@@ -187,14 +188,20 @@ void MainWindow::on_actionHelp_triggered()
      QTextStream stream(file);
 
      ui->plainTextEdit->setPlainText(stream.readAll());
+     */
+
+    ui->plainTextEdit->setPlainText(tr("Для открытия текстового файла нажмите \'Открыть\'.\n" \
+        "Для открытия его в режимя \'только для чтения\' нажмите соответствующий пункт меню.\n"));
 
      ui->statusbar->showMessage("Help is shown.");
 
+     /*
      file->close();
     }
     else
         QMessageBox::warning(this, "File not found",
             "Can't open resource " + filePath);
+            */
 }
 
 

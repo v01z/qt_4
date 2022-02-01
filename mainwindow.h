@@ -14,6 +14,7 @@ QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
+
     Q_OBJECT
 
 public:
@@ -42,5 +43,7 @@ private:
     void disableSave(bool);
 
 };
+
+//QString fileNotFoundStr = QObject::tr("Файл не найден");
 
 #endif // MAINWINDOW_H

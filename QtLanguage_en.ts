@@ -129,6 +129,11 @@
         <translation type="unfinished">Help</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="43"/>
+        <source>Choose file to open</source>
+        <translation type="unfinished">Choose file to open</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="44"/>
         <location filename="mainwindow.cpp" line="82"/>
         <location filename="mainwindow.cpp" line="144"/>
