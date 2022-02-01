@@ -21,17 +21,24 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionOpen_3_triggered();
+    void on_actionOpen_triggered();
 
-    void on_actionOpen_read_only_mode_2_triggered();
+    void on_actionOpen_read_only_mode_triggered();
 
-    void on_actionSave_2_triggered();
+    void on_actionSaveAs_triggered();
 
-    void on_actionExit_2_triggered();
+    void on_actionExit_triggered();
 
     void on_actionHelp_triggered();
 
+    void on_actionSave_triggered();
+
+    void on_actionClose_triggered();
+
 private:
     Ui::MainWindow *ui;
+    QFile *file;
+
 };
+
 #endif // MAINWINDOW_H
