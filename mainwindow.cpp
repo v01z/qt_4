@@ -26,7 +26,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->actionExit->setText(tr("Выход"));
 
     ui->menuSettings->setTitle(tr("Настройки"));
+
     ui->menuLanguage->setTitle(tr("Язык"));
+    ui->actionRussian->setText(tr("Русский"));
+    ui->actionEnglish->setText(tr("Английский"));
 
     ui->actionKey_bindings->setText(tr("Сочетания клавиш"));
 
