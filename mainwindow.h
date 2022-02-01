@@ -39,6 +39,8 @@ private:
     Ui::MainWindow *ui;
     QFile *file;
 
+    void disableSave(bool);
+
 };
 
 #endif // MAINWINDOW_H

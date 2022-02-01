@@ -37,8 +37,12 @@ void MainWindow::on_actionOpen_triggered()
              if (file->open(QFile::ReadWrite | QFile::ExistingOnly))
              {
                  QTextStream stream(file);
+
+                 disableSave(false);
+
                  ui->plainTextEdit->setPlainText(
                     stream.readAll());
+
                  ui->statusbar->showMessage(file->fileName());
              }
              else //!open
@@ -71,15 +75,14 @@ void MainWindow::on_actionOpen_read_only_mode_triggered()
              if (file->open(QFile::ReadOnly | QFile::ExistingOnly))
              {
                  QTextStream stream(file);
+
                  ui->plainTextEdit->setPlainText(
                     stream.readAll());
 
                  file->close();
 
+                 disableSave(true);
 
-                 //We should union these strokes to a single func
-                 ui->actionSave->setEnabled(false);
-                 ui->actionSaveAs->setEnabled(false);
                  ui->statusbar->showMessage("File " + file->fileName() +
                     " has been opened in read-only mode.");
 
@@ -99,13 +102,16 @@ void MainWindow::on_actionSave_triggered()
     if (file->isOpen())
     {
         QTextStream stream(file);
+
         stream << ui->plainTextEdit->toPlainText();
+
         ui->statusbar->showMessage("File " + file->fileName() +
             " has been saved.");
 
     }
     else
-        //на случай, если юзер захочет сохранить help-text, например
+        //на случай, если юзер захочет вывести help-text
+        //в файл, а также создать новый текст и сохранить его
         on_actionSaveAs_triggered();
 }
 
@@ -128,7 +134,9 @@ void MainWindow::on_actionSaveAs_triggered()
         if (file->open(QFile::WriteOnly | QFile::NewOnly))
          {
            QTextStream stream(file);
+
            stream << ui->plainTextEdit->toPlainText();
+
            ui->statusbar->showMessage("File saved as " + file->fileName() + '.');
          }
         else //!open
@@ -159,8 +167,11 @@ void MainWindow::on_actionHelp_triggered()
     if (file->open(QFile::ReadOnly | QFile::ExistingOnly))
     {
      QTextStream stream(file);
+
      ui->plainTextEdit->setPlainText(stream.readAll());
+
      ui->statusbar->showMessage("Help is shown.");
+
      file->close();
     }
     else
@@ -175,7 +186,25 @@ void MainWindow::on_actionClose_triggered()
    if (file->isOpen())
        file->close();
 
+   disableSave(false);
+
    ui->plainTextEdit->clear();
+
    ui->statusbar->clearMessage();
+}
+
+void MainWindow::disableSave(bool disableIt)
+{
+    if(disableIt)
+    {
+        ui->actionSave->setEnabled(false);
+        ui->actionSaveAs->setEnabled(false);
+    }
+    else
+    {
+        ui->actionSave->setEnabled(true);
+        ui->actionSaveAs->setEnabled(true);
+
+    }
 }
 
