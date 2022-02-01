@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTranslator>
-#include <QApplication>
 
 const QString FILE_NOT_FOUND { QObject::tr("Файл не найден") };
 const QString TXT_FILE_ONLY { QObject::tr ("Текстовый файл(*.txt)") };
@@ -241,12 +240,12 @@ void MainWindow::on_actionRussian_triggered()
 
          translator.load(lang);
 
-         qApp->installTranslator(&translator);
-//         QApplication::installTranslator(&translator);
+         QApplication::installTranslator(&translator);
 
-//       a.installTranslator(&translator);
          ui->actionEnglish->setChecked(false);
          ui->actionRussian->setChecked(true);
+
+         ui->retranslateUi(this);
 
 }
 
@@ -259,12 +258,11 @@ void MainWindow::on_actionEnglish_triggered()
 
          translator.load(lang);
 
-         qApp->installTranslator(&translator);
-
-        // QApplication::installTranslator(&translator);
+         QApplication::installTranslator(&translator);
 
          ui->actionEnglish->setChecked(true);
          ui->actionRussian->setChecked(false);
 
+         ui->retranslateUi(this);
 }
 
