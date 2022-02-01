@@ -7,6 +7,24 @@ MainWindow::MainWindow(QWidget *parent)
       file(new QFile())
 {
     ui->setupUi(this);
+
+    setWindowTitle(tr("Домашняя работа №4"));
+
+    ui->menuFile->setTitle(tr("Файл"));
+    ui->actionOpen->setText(tr("Открыть"));
+    ui->actionOpen_read_only_mode->setText(tr("Открыть \"для чтения\""));
+    ui->actionClose->setText(tr("Закрыть"));
+    ui->actionSave->setText(tr("Сохранить"));
+    ui->actionSaveAs->setText(tr("Сохранить как"));
+    ui->actionExit->setText(tr("Выход"));
+
+    ui->menuSettings->setTitle(tr("Настройки"));
+    ui->actionLanguage->setText(tr("Язык"));
+    ui->actionKey_bindings->setText(tr("Сочетания клавиш"));
+
+    ui->actionHelp->setText(tr("Помощь"));
+
+
 }
 
 MainWindow::~MainWindow()
