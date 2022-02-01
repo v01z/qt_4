@@ -76,6 +76,10 @@ void MainWindow::on_actionOpen_read_only_mode_triggered()
 
                  file->close();
 
+
+                 //We should union these strokes to a single func
+                 ui->actionSave->setEnabled(false);
+                 ui->actionSaveAs->setEnabled(false);
                  ui->statusbar->showMessage("File " + file->fileName() +
                     " has been opened in read-only mode.");
 
