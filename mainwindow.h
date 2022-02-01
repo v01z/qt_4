@@ -36,6 +36,10 @@ private slots:
 
     void on_actionClose_triggered();
 
+    void on_actionRussian_triggered();
+
+    void on_actionEnglish_triggered();
+
 private:
     Ui::MainWindow *ui;
     QFile *file;

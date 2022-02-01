@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QTranslator>
+#include <QApplication>
 
 const QString FILE_NOT_FOUND { QObject::tr("Файл не найден") };
 const QString TXT_FILE_ONLY { QObject::tr ("Текстовый файл(*.txt)") };
@@ -25,7 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->actionExit->setText(tr("Выход"));
 
     ui->menuSettings->setTitle(tr("Настройки"));
-    ui->actionLanguage->setText(tr("Язык"));
+    ui->menuLanguage->setTitle(tr("Язык"));
+
     ui->actionKey_bindings->setText(tr("Сочетания клавиш"));
 
     ui->actionHelp->setText(tr("Помощь"));
@@ -227,5 +230,41 @@ void MainWindow::disableSave(bool disableIt)
         ui->actionSaveAs->setEnabled(true);
 
     }
+}
+
+
+void MainWindow::on_actionRussian_triggered()
+{
+         QTranslator translator;
+
+         QString lang { "./QtLanguage_ru" };
+
+         translator.load(lang);
+
+         qApp->installTranslator(&translator);
+//         QApplication::installTranslator(&translator);
+
+//       a.installTranslator(&translator);
+         ui->actionEnglish->setChecked(false);
+         ui->actionRussian->setChecked(true);
+
+}
+
+
+void MainWindow::on_actionEnglish_triggered()
+{
+         QTranslator translator;
+
+         QString lang { "./QtLanguage_en" };
+
+         translator.load(lang);
+
+         qApp->installTranslator(&translator);
+
+        // QApplication::installTranslator(&translator);
+
+         ui->actionEnglish->setChecked(true);
+         ui->actionRussian->setChecked(false);
+
 }
 
