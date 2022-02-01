@@ -4,7 +4,7 @@
 #include <QResource>
 
 //All pathes like this depend on IDE settings:
-const QString resFilePath { QStringLiteral ( "../qt_3/resources.rcc" ) };
+const QString resFilePath { QStringLiteral ( "../qt_4/resources.rcc" ) };
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +14,9 @@ int main(int argc, char *argv[])
     if (!resFile.exists())
     {
         QMessageBox::warning(nullptr, "File not found",
-            "Can't open resourses file " + resFilePath);
+            "Can't open resourses file " + resFilePath +
+                ".\nDont forget to issue next command beforehand:\n" +
+                             "rcc -binary res/resources.qrc -o resources.rcc");
 
         return -1;
     }
