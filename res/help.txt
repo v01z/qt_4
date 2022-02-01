@@ -1,0 +1,9 @@
+If you wish to load any text to PlainTextEdit, please 
+press button 'Open' to choose a text file. Alternatively,
+you can open text i read-only mode (press 'Open read-only mode').
+
+Press button 'Save' to save text from PlainTextEdit
+to a certain textfile.
+
+Click 'Close' to exit current task.
+
