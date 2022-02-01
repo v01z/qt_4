@@ -1,6 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+const QString FILE_NOT_FOUND { QObject::tr("Файл не найден") };
+const QString TXT_FILE_ONLY { QObject::tr ("Текстовый файл(*.txt)") };
+const QString CHOOSE_FILE_TO_OPEN { QObject::tr("Выберите файл для открытия") };
+const QString CANT_OPEN_FILE { QObject::tr("Не могу открыть файл ") };
+const QString FILE_SPACE { QObject::tr("Файл ") };
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
@@ -12,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->menuFile->setTitle(tr("Файл"));
     ui->actionOpen->setText(tr("Открыть"));
-    ui->actionOpen_read_only_mode->setText(tr("Открыть \"для чтения\""));
+    ui->actionOpen_read_only_mode->setText(tr("Открыть только для чтения"));
     ui->actionClose->setText(tr("Закрыть"));
     ui->actionSave->setText(tr("Сохранить"));
     ui->actionSaveAs->setText(tr("Сохранить как"));
@@ -40,8 +46,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionOpen_triggered()
 {
     QString filePath { QFileDialog::getOpenFileName(this,
-        tr("Choose file to open"), QDir::current().path(),
-            tr("Text file(*.txt)")) };
+        CHOOSE_FILE_TO_OPEN, QDir::current().path(),
+            TXT_FILE_ONLY) };
 
     if (filePath.length())
     {
@@ -64,8 +70,8 @@ void MainWindow::on_actionOpen_triggered()
                  ui->statusbar->showMessage(file->fileName());
              }
              else //!open
-                 QMessageBox::warning(this, "File not found",
-                    "Can't open file " + filePath);
+                 QMessageBox::warning(this, FILE_NOT_FOUND,
+                    CANT_OPEN_FILE + filePath);
 
          }
 
@@ -78,8 +84,8 @@ void MainWindow::on_actionOpen_read_only_mode_triggered()
 {
 
     QString filePath { QFileDialog::getOpenFileName(this,
-        "Choose file to open", QDir::current().path(),
-            trUtf8("Text file(*.txt)")) };
+        CHOOSE_FILE_TO_OPEN, QDir::current().path(),
+            TXT_FILE_ONLY) };
 
     if (filePath.length())
     {
@@ -101,13 +107,13 @@ void MainWindow::on_actionOpen_read_only_mode_triggered()
 
                  disableSave(true);
 
-                 ui->statusbar->showMessage("File " + file->fileName() +
-                    " has been opened in read-only mode.");
+                 ui->statusbar->showMessage(FILE_SPACE + file->fileName() +
+                    tr(" открыт в режиме \'только для чтения\'."));
 
              }
              else //!open
-                 QMessageBox::warning(this, "File not found",
-                    "Can't open file " + filePath);
+                 QMessageBox::warning(this, FILE_NOT_FOUND,
+                    CANT_OPEN_FILE + filePath);
 
          }
     }
@@ -123,8 +129,8 @@ void MainWindow::on_actionSave_triggered()
 
         stream << ui->plainTextEdit->toPlainText();
 
-        ui->statusbar->showMessage("File " + file->fileName() +
-            " has been saved.");
+        ui->statusbar->showMessage(FILE_SPACE + file->fileName() +
+            tr(" сохранён."));
 
     }
     else
@@ -140,8 +146,8 @@ void MainWindow::on_actionSaveAs_triggered()
     if (file->isOpen()) file->close();
 
     QString filePath { QFileDialog::getSaveFileName(this,
-         "Save file as", QDir::current().path(),
-            trUtf8("Text file(*.txt)")) };
+         tr("Сохранить файл как"), QDir::current().path(),
+            TXT_FILE_ONLY) };
 
     if (filePath.length())
     {
@@ -155,12 +161,12 @@ void MainWindow::on_actionSaveAs_triggered()
 
            stream << ui->plainTextEdit->toPlainText();
 
-           ui->statusbar->showMessage("File saved as " + file->fileName() + '.');
+           ui->statusbar->showMessage(tr("Файл сохранён как ") + file->fileName() + '.');
          }
         else //!open
         {
-        QMessageBox::warning(this, "File not found",
-             "Can't open file " + filePath);
+        QMessageBox::warning(this, FILE_NOT_FOUND,
+             CANT_OPEN_FILE + filePath);
 
         }
 
@@ -177,31 +183,21 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::on_actionHelp_triggered()
 {
 
-    /*
     if (file->isOpen()) file->close();
 
-    QString filePath { ":help.txt" };
+    ui->plainTextEdit->setPlainText(tr("Для открытия текстового файла нажмите \'Файл->Открыть\'.\n" \
+        "Для открытия его в режимя \'только для чтения\' нажмите соответствующий пункт меню.\n" \
+        "Далее более кратко:\n" \
+        "\'Сохранить\' и \'Сохранить как\' - сохранить файл со старым, либо новым именем "\
+        "соответственно.\n " \
+        "\'Выход\' - выход из программы\n" \
+        "\'Настройки->Язык\' - возможность сменить язык приложения.\n" \
+        "\'Сочетания клавиш\' - изменить комбинации клавиш по вкусу.\n" \
+        "\'?->Помощь\' - вывести эту справку."));
 
-    file->setFileName(filePath);
-    if (file->open(QFile::ReadOnly | QFile::ExistingOnly))
-    {
-     QTextStream stream(file);
 
-     ui->plainTextEdit->setPlainText(stream.readAll());
-     */
+     ui->statusbar->showMessage(tr("Краткая справка показана."));
 
-    ui->plainTextEdit->setPlainText(tr("Для открытия текстового файла нажмите \'Открыть\'.\n" \
-        "Для открытия его в режимя \'только для чтения\' нажмите соответствующий пункт меню.\n"));
-
-     ui->statusbar->showMessage("Help is shown.");
-
-     /*
-     file->close();
-    }
-    else
-        QMessageBox::warning(this, "File not found",
-            "Can't open resource " + filePath);
-            */
 }
 
 

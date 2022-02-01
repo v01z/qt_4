@@ -44,6 +44,4 @@ private:
 
 };
 
-//QString fileNotFoundStr = QObject::tr("Файл не найден");
-
 #endif // MAINWINDOW_H
