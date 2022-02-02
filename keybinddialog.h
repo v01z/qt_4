@@ -8,6 +8,13 @@ namespace Ui {
 class KeyBindDialog;
 }
 
+/*
+struct DataToView{
+    KeyBind kbData;
+    QPair<int, QString> viewPair;
+};
+*/
+
 class KeyBindDialog : public QDialog
 {
     Q_OBJECT

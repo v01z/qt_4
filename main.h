@@ -26,4 +26,22 @@ const QPair <int, QString> actionsIndexes [] = {
 
 };
 
+//Пока тут будет два модификатора, потом можно дополнить
+const QPair <Qt::KeyboardModifier, QString> modsTranslator [] = {
+    { Qt::ControlModifier, "Cntrl" },
+    { Qt::ShiftModifier, "Shift" }
+};
+
+//Тут тоже пока не вся клава
+const QPair <Qt::Key, QString> keysTranslator [] = {
+    { Qt::Key_A, "A" },
+    { Qt::Key_B, "B" },
+    { Qt::Key_C, "C" },
+    { Qt::Key_D, "D" },
+    { Qt::Key_E, "E" },
+    { Qt::Key_F1, "F1" },
+    { Qt::Key_F2, "F2" },
+    { Qt::Key_F3, "F3" }
+};
+
 #endif // MAIN_H

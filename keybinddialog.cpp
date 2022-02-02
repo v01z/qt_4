@@ -17,7 +17,9 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
     for (int i{}; i < iKeysVec.size(); ++i)
     {
         ui->cbAction->addItem(actionsIndexes[i].second);
-        ui->cbMod1->addItem(iKeysVec[i].mod1);
+
+//        switch
+        //ui->cbMod1->addItem(iKeysVec[i].mod1);
     }
 }
 
