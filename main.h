@@ -3,6 +3,7 @@
 
 #include <QTranslator>
 #include <QVector>
+#include <QMap>
 //#include <QPair>
 
 struct KeyBind {
@@ -27,13 +28,16 @@ const QPair <int, QString> actionsIndexes [] = {
 };
 
 //Пока тут будет два модификатора, потом можно дополнить
-const QPair <Qt::KeyboardModifier, QString> modsTranslator [] = {
+//const QPair <Qt::KeyboardModifier, QString> modsTranslator [] = {
+const QMap<Qt::KeyboardModifier, QString> modsTranslator  {
     { Qt::ControlModifier, "Cntrl" },
     { Qt::ShiftModifier, "Shift" }
 };
 
 //Тут тоже пока не вся клава
-const QPair <Qt::Key, QString> keysTranslator [] = {
+//const QPair <Qt::Key, QString> keysTranslator [] = {
+const QMap <Qt::Key, QString> keyTranslator  {
+//const std::map <Qt::Key, QString> keyTranslator  {
     { Qt::Key_A, "A" },
     { Qt::Key_B, "B" },
     { Qt::Key_C, "C" },
