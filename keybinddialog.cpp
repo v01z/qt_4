@@ -27,6 +27,7 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
     for (int i{}; i < keyTranslator.size(); ++i)
         ui->cbKey->addItem(keyTranslator[i].second);
 
+    //Create func that takes one argument - KeyBind and update all interface исходя из этого
 //    ui->cbAction->setCurrentIndex();
 //    ui->cbMod1->setCurrentIndex();
 
