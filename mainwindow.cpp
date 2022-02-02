@@ -22,9 +22,17 @@ MainWindow::MainWindow(QWidget *parent)
     //keys.push_back((*on_actionOpen_triggered)());
     //keys.push_back((this->*on_actionOpen_triggered)());
 
-    keys.push_back( {Qt::ControlModifier, Qt::NoModifier, Qt::Key_O,
-                    this->*on_actionOpen_triggered
-                    } );
+//    keys.push_back( { Qt::KeyboardModifier(Qt::ControlModifier & Qt::NoModifier), Qt::Key_O} );    // 0 - Open
+    keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_O} );    // 0 - Open
+    keys.push_back( { Qt::ControlModifier, Qt::ShiftModifier, Qt::Key_R} ); // 1 - Rus
+    keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_R} );	// 2 - read-only
+    keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_X} ); 	// 3 - close
+    keys.push_back( { Qt::ControlModifier, Qt::ShiftModifier, Qt::Key_S} ); // 4 - save as
+    keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_S} );    // 5 - save
+    keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_Q} );    // 6 - quit
+    keys.push_back( { Qt::ControlModifier, Qt::ShiftModifier, Qt::Key_E} ); // 7 - Eng
+    keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_H} );    // 8 - help
+    keys.push_back( { Qt::ControlModifier, Qt::ShiftModifier, Qt::Key_K} ); // 9 - bindings
 
     ui->setupUi(this);
 
@@ -302,6 +310,7 @@ void MainWindow::on_actionEnglish_triggered()
 void MainWindow::keyReleaseEvent(QKeyEvent *event)
 {
 
+/*
     if (event->modifiers().testFlag(Qt::ControlModifier))
     {
         switch (event->key())
@@ -344,6 +353,39 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event)
 
     if (event->key() == Qt::Key_F3)
         on_actionOpen_read_only_mode_triggered();
+*/
+
+   // KeyBind inputKey { Qt::KeyboardModifier(event->modifiers()), event->key() };
+    //Qt::Key tempKey = event->key();
+
+//    for (const auto &elem : keys)
+    for (int i{}; i < keys.size(); ++i)
+    {
+        if (event->key() == keys[i].key)
+            {
+               if (event->modifiers() & keys[i].mod1)
+                    {
+                    if (event->modifiers() & keys[i].mod2)
+                        {
+                            qDebug() << i << " - two modifiers. ";;
+                            break;
+                        }
+                    else
+                        {
+                            qDebug() << i << " - only one modif captured";
+                            break;
+                        }
+                    }
+            qDebug() << i << " no modif but key found.";
+            break;
+            }
+        else
+            {
+//            	qDebug() << i << " but not found\n";
+            }
+    }
+//    inputKey.key  event->key();
+//	if (event->key() == keys[0]
 }
 
 

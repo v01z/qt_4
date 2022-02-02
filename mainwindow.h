@@ -15,7 +15,6 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 
-/*
 struct KeyBind {
     Qt::KeyboardModifier mod1;
     Qt::KeyboardModifier mod2;
@@ -23,8 +22,7 @@ struct KeyBind {
    // int keyCode;
 
 };
-*/
-struct KeyBind;
+//struct KeyBind;
 
 class MainWindow : public QMainWindow
 {
@@ -70,6 +68,7 @@ protected:
 
 };
 
+/*
 struct KeyBind {
     Qt::KeyboardModifier mod1;
     Qt::KeyboardModifier mod2;
@@ -78,6 +77,7 @@ struct KeyBind {
     std::function<void> MainWindow::*action();
 
 };
+*/
 
 //struct KeyBind {
   //  Qt::KeyboardModifier mod1;
