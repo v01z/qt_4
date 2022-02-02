@@ -15,6 +15,17 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow),
       file(new QFile()), canSave(true)
 {
+    //keys.push_back( KeyBind(Qt::ControlModifier, nullptr, Qt::Key_O,
+//    keys.push_back( KeyBind(Qt::ControlModifier, Qt::ShiftModifier, Qt::Key_O,
+    //keys.push_back((this->*on_actionOpen_triggered)());
+//        on_actionOpen_triggered()));
+    //keys.push_back((*on_actionOpen_triggered)());
+    //keys.push_back((this->*on_actionOpen_triggered)());
+
+    keys.push_back( {Qt::ControlModifier, Qt::NoModifier, Qt::Key_O,
+                    this->*on_actionOpen_triggered
+                    } );
+
     ui->setupUi(this);
 
     setWindowTitle(tr("Домашняя работа №4"));
@@ -344,6 +355,5 @@ void MainWindow::on_actionKey_bindings_triggered()
     KeyBindDialog dialog;
     dialog.setModal(true);
     dialog.exec();
-
 }
 

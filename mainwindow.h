@@ -6,11 +6,25 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QVector>
+#include <functional>
 
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+
+/*
+struct KeyBind {
+    Qt::KeyboardModifier mod1;
+    Qt::KeyboardModifier mod2;
+    Qt::Key key;
+   // int keyCode;
+
+};
+*/
+struct KeyBind;
 
 class MainWindow : public QMainWindow
 {
@@ -49,9 +63,32 @@ private:
     bool canSave;
     void disableSave(bool);
 
+    QVector<KeyBind> keys;
+
 protected:
     void keyReleaseEvent(QKeyEvent*) override;
 
 };
+
+struct KeyBind {
+    Qt::KeyboardModifier mod1;
+    Qt::KeyboardModifier mod2;
+    Qt::Key key;
+//    void (MainWindow::*action)(void);
+    std::function<void> MainWindow::*action();
+
+};
+
+//struct KeyBind {
+  //  Qt::KeyboardModifier mod1;
+   // Qt::KeyboardModifier mod2;
+  //  int keyCode;
+//    void (*action)();
+//    std::function<void> action()const;
+//    void (MainWindow::*action)();
+//    std::function<void()> MainWindow::*action();
+//    void (MainWindow::*action)(void);
+
+//};
 
 #endif // MAINWINDOW_H

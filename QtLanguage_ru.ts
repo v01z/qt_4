@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
+    <name>KeyBindDialog</name>
+    <message>
+        <location filename="keybinddialog.ui" line="13"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="20"/>
@@ -49,14 +57,14 @@
         <translation type="unfinished">Помощь</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="126"/>
-        <location filename="mainwindow.cpp" line="31"/>
+        <location filename="mainwindow.ui" line="129"/>
+        <location filename="mainwindow.cpp" line="33"/>
         <source>Русский</source>
         <translation type="unfinished">Русский</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="134"/>
-        <location filename="mainwindow.cpp" line="32"/>
+        <location filename="mainwindow.ui" line="137"/>
+        <location filename="mainwindow.cpp" line="34"/>
         <source>Английский</source>
         <translation type="unfinished">Английский</translation>
     </message>
@@ -76,92 +84,92 @@
         <translation type="unfinished">Сохранить</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="115"/>
+        <location filename="mainwindow.ui" line="118"/>
         <source>Close</source>
         <translation type="unfinished">Закрыть</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="18"/>
+        <location filename="mainwindow.cpp" line="20"/>
         <source>Домашняя работа №4</source>
         <translation type="unfinished">Домашняя работа №4</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="20"/>
+        <location filename="mainwindow.cpp" line="22"/>
         <source>Файл</source>
         <translation type="unfinished">Файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="21"/>
+        <location filename="mainwindow.cpp" line="23"/>
         <source>Открыть</source>
         <translation type="unfinished">Открыть</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="22"/>
+        <location filename="mainwindow.cpp" line="24"/>
         <source>Открыть только для чтения</source>
         <translation type="unfinished">Открыть только для чтения</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="23"/>
+        <location filename="mainwindow.cpp" line="25"/>
         <source>Закрыть</source>
         <translation type="unfinished">Закрыть</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="24"/>
+        <location filename="mainwindow.cpp" line="26"/>
         <source>Сохранить</source>
         <translation type="unfinished">Сохранить</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="25"/>
+        <location filename="mainwindow.cpp" line="27"/>
         <source>Сохранить как</source>
         <translation type="unfinished">Сохранить как</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="26"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>Выход</source>
         <translation type="unfinished">Выход</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="28"/>
+        <location filename="mainwindow.cpp" line="30"/>
         <source>Настройки</source>
         <translation type="unfinished">Настройки</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="30"/>
+        <location filename="mainwindow.cpp" line="32"/>
         <source>Язык</source>
         <translation type="unfinished">Язык</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="34"/>
+        <location filename="mainwindow.cpp" line="36"/>
         <source>Сочетания клавиш</source>
         <translation type="unfinished">Сочетания клавиш</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="36"/>
+        <location filename="mainwindow.cpp" line="38"/>
         <source>Помощь</source>
         <translation type="unfinished">Помощь</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="116"/>
+        <location filename="mainwindow.cpp" line="122"/>
         <source> открыт в режиме &apos;только для чтения&apos;.</source>
         <translation type="unfinished"> открыт в режиме только для чтения.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="138"/>
+        <location filename="mainwindow.cpp" line="153"/>
         <source> сохранён.</source>
         <translation type="unfinished"> сохранён.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="154"/>
+        <location filename="mainwindow.cpp" line="169"/>
         <source>Сохранить файл как</source>
         <translation type="unfinished">Сохранить файл как</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="169"/>
+        <location filename="mainwindow.cpp" line="184"/>
         <source>Файл сохранён как </source>
         <translation type="unfinished">Файл сохранён как </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="193"/>
+        <location filename="mainwindow.cpp" line="208"/>
         <source>Для открытия текстового файла нажмите &apos;Файл-&gt;Открыть&apos;.
 Для открытия его в режимя &apos;только для чтения&apos; нажмите соответствующий пункт меню.
 Далее более кратко:
@@ -180,7 +188,7 @@
 &apos;?-&gt;Помощь&apos; - вывести эту справку.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="204"/>
+        <location filename="mainwindow.cpp" line="219"/>
         <source>Краткая справка показана.</source>
         <translation type="unfinished">Краткая справка показана.</translation>
     </message>
@@ -188,27 +196,27 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="mainwindow.cpp" line="5"/>
+        <location filename="mainwindow.cpp" line="7"/>
         <source>Файл не найден</source>
         <translation type="unfinished">Файл не найден</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="6"/>
+        <location filename="mainwindow.cpp" line="8"/>
         <source>Текстовый файл(*.txt)</source>
         <translation type="unfinished">Текстовый файл(*.txt)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="7"/>
+        <location filename="mainwindow.cpp" line="9"/>
         <source>Выберите файл для открытия</source>
         <translation type="unfinished">Выберите файл для открытия</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="8"/>
+        <location filename="mainwindow.cpp" line="10"/>
         <source>Не могу открыть файл </source>
         <translation type="unfinished">Не могу открыть файл </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="9"/>
+        <location filename="mainwindow.cpp" line="11"/>
         <source>Файл </source>
         <translation type="unfinished">Файл </translation>
     </message>
