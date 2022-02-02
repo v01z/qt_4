@@ -62,6 +62,7 @@ private:
     void disableSave(bool);
 
     QVector<KeyBind> keys;
+    void actionChoosing(int);
 
 protected:
     void keyReleaseEvent(QKeyEvent*) override;

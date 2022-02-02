@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTranslator>
 #include "keybinddialog.h"
@@ -359,38 +359,75 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event)
     //Qt::Key tempKey = event->key();
 
 //    for (const auto &elem : keys)
-    for (int i{}; i < keys.size(); ++i)
+    bool weHaveThisKey{ false };
+    int i{};
+    for (; i < keys.size(); ++i)
     {
-        if (event->key() == keys[i].key)
+        if ((event->key() == keys[i].key) && event->modifiers().testFlag(keys[i].mod1) &&
+            event->modifiers().testFlag(keys[i].mod2))
+
             {
-               if (event->modifiers() & keys[i].mod1)
-                    {
-                    if (event->modifiers() & keys[i].mod2)
-                        {
-                            qDebug() << i << " - two modifiers. ";;
-                            break;
-                        }
-                    else
-                        {
-                            qDebug() << i << " - only one modif captured";
-                            break;
-                        }
-                    }
-            qDebug() << i << " no modif but key found.";
-            break;
+                weHaveThisKey = true;
+                break;
             }
-        else
+        else if ((event->key() == keys[i].key) &&
+                  (event->modifiers().testFlag(keys[i].mod1)) &&
+                    (keys[i].mod2 == Qt::NoModifier))
             {
-//            	qDebug() << i << " but not found\n";
+                weHaveThisKey = true;
+                break;
             }
+        else if ((event->key() == keys[i].key) &&
+                  (event->modifiers().testFlag(keys[i].mod2)) &&
+                    (keys[i].mod1 == Qt::NoModifier))
+            {
+                weHaveThisKey = true;
+                break;
+            }
+
     }
-//    inputKey.key  event->key();
-//	if (event->key() == keys[0]
+
+    weHaveThisKey?
+                actionChoosing(i):
+                ui->statusbar->showMessage(": " + event->text());
 }
 
-
-
-
+void MainWindow::actionChoosing(int vectorIndex)
+{
+    switch (vectorIndex)
+    {
+        case 0:
+            on_actionOpen_triggered();
+            break;
+        case 1:
+            on_actionRussian_triggered();
+            break;
+        case 2:
+            on_actionOpen_read_only_mode_triggered();
+            break;
+        case 3:
+            on_actionClose_triggered();
+            break;
+        case 4:
+            on_actionSaveAs_triggered();
+            break;
+        case 5:
+            on_actionSave_triggered();
+            break;
+        case 6:
+            on_actionExit_triggered();
+            break;
+        case 7:
+            on_actionEnglish_triggered();
+            break;
+        case 8:
+            on_actionHelp_triggered();
+            break;
+        case 9:
+            on_actionKey_bindings_triggered();
+            break;
+        }
+}
 
 void MainWindow::on_actionKey_bindings_triggered()
 {
