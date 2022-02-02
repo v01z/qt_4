@@ -40,11 +40,17 @@ private slots:
 
     void on_actionEnglish_triggered();
 
+    void on_actionKey_bindings_triggered();
+
 private:
     Ui::MainWindow *ui;
     QFile *file;
 
+    bool canSave;
     void disableSave(bool);
+
+protected:
+    void keyReleaseEvent(QKeyEvent*) override;
 
 };
 

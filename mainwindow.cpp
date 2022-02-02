@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTranslator>
+#include "keybinddialog.h"
+#include <QDebug>
 
 const QString FILE_NOT_FOUND { QObject::tr("Файл не найден") };
 const QString TXT_FILE_ONLY { QObject::tr ("Текстовый файл(*.txt)") };
@@ -11,7 +13,7 @@ const QString FILE_SPACE { QObject::tr("Файл ") };
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-      file(new QFile())
+      file(new QFile()), canSave(true)
 {
     ui->setupUi(this);
 
@@ -63,6 +65,7 @@ void MainWindow::on_actionOpen_triggered()
                     file->close();
 
              file->setFileName(filePath);
+//             if (file->open(QFile::ReadWrite | QFile::ExistingOnly | QIODevice::Truncate | QIODevice::Text))
              if (file->open(QFile::ReadWrite | QFile::ExistingOnly))
              {
                  QTextStream stream(file);
@@ -72,6 +75,7 @@ void MainWindow::on_actionOpen_triggered()
                  ui->plainTextEdit->setPlainText(
                     stream.readAll());
 
+                 ui->actionClose->setEnabled(true);
                  ui->statusbar->showMessage(file->fileName());
              }
              else //!open
@@ -112,6 +116,8 @@ void MainWindow::on_actionOpen_read_only_mode_triggered()
 
                  disableSave(true);
 
+                 ui->actionClose->setEnabled(true);
+
                  ui->statusbar->showMessage(FILE_SPACE + file->fileName() +
                     tr(" открыт в режиме \'только для чтения\'."));
 
@@ -131,8 +137,17 @@ void MainWindow::on_actionSave_triggered()
     if (file->isOpen())
     {
         QTextStream stream(file);
+     //   QTextStream stream(file, QIODevice::ReadWrite | QIODevice::Truncate);
+//        QTextStream stream(file, QIODevice::ReadWrite | QIODevice::Truncate);
 
+        //file.write(mystring.toUtf8());
         stream << ui->plainTextEdit->toPlainText();
+
+        //works like <<
+        /*
+        file->write(ui->plainTextEdit->toPlainText().toUtf8(),
+            ui->plainTextEdit->toPlainText().toUtf8().length());
+            */
 
         ui->statusbar->showMessage(FILE_SPACE + file->fileName() +
             tr(" сохранён."));
@@ -216,6 +231,8 @@ void MainWindow::on_actionClose_triggered()
 
    ui->plainTextEdit->clear();
 
+   ui->actionClose->setEnabled(false);
+
    ui->statusbar->clearMessage();
 }
 
@@ -223,11 +240,13 @@ void MainWindow::disableSave(bool disableIt)
 {
     if(disableIt)
     {
+        canSave = false;
         ui->actionSave->setEnabled(false);
         ui->actionSaveAs->setEnabled(false);
     }
     else
     {
+        canSave = true;
         ui->actionSave->setEnabled(true);
         ui->actionSaveAs->setEnabled(true);
 
@@ -267,5 +286,64 @@ void MainWindow::on_actionEnglish_triggered()
          ui->actionRussian->setChecked(false);
 
          ui->retranslateUi(this);
+}
+
+void MainWindow::keyReleaseEvent(QKeyEvent *event)
+{
+
+    if (event->modifiers().testFlag(Qt::ControlModifier))
+    {
+        switch (event->key())
+        {
+            case Qt::Key_O:
+                on_actionOpen_triggered();
+                break;
+            case Qt::Key_R:
+                if (event->modifiers().testFlag(Qt::ShiftModifier))
+                    on_actionRussian_triggered();
+                else
+                    on_actionOpen_read_only_mode_triggered();
+                break;
+            case Qt::Key_X:
+                on_actionClose_triggered();
+                break;
+            case Qt::Key_S:
+                if (!canSave) break;
+                if (event->modifiers().testFlag(Qt::ShiftModifier))
+                    on_actionSaveAs_triggered();
+                else
+                    on_actionSave_triggered();
+                break;
+            case Qt::Key_Q:
+                on_actionExit_triggered();
+                break;
+            case Qt::Key_E:
+                if (event->modifiers().testFlag(Qt::ShiftModifier))
+                    on_actionEnglish_triggered();
+                break;
+            case Qt::Key_H:
+                on_actionHelp_triggered();
+                break;
+            case Qt::Key_K:
+                if (event->modifiers().testFlag(Qt::ShiftModifier))
+                    on_actionKey_bindings_triggered();
+                break;
+        }
+    }
+
+    if (event->key() == Qt::Key_F3)
+        on_actionOpen_read_only_mode_triggered();
+}
+
+
+
+
+
+void MainWindow::on_actionKey_bindings_triggered()
+{
+    KeyBindDialog dialog;
+    dialog.setModal(true);
+    dialog.exec();
+
 }
 
