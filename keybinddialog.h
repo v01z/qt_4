@@ -22,7 +22,8 @@ private slots:
 
 private:
     Ui::KeyBindDialog *ui;
-    QVector<KeyBind> *keysVec;
+//    QVector<KeyBind> *keysVec;
+//    KeyBind *keyBind;
 };
 
 #endif // KEYBINDDIALOG_H

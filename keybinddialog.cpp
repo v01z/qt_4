@@ -9,20 +9,21 @@ KeyBindDialog::KeyBindDialog(QWidget *parent) :
 }
 
 KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
-    KeyBindDialog(),
-    keysVec{}
+    KeyBindDialog()
+//    keysVec{}
 {
+//    keyBind = new KeyBind;
 
-    /*
-    for (int i{}; i < keysVec.size(); ++i)
+    for (int i{}; i < iKeysVec.size(); ++i)
     {
-        ui->cbAction->addItem(keysVec[i].);
+        ui->cbAction->addItem(actionsIndexes[i].second);
+        ui->cbMod1->addItem(iKeysVec[i].mod1);
     }
-    */
 }
 
 KeyBindDialog::~KeyBindDialog()
 {
+  //  delete keyBind;
     delete ui;
 }
 
