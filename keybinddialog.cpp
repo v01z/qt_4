@@ -14,17 +14,22 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
 {
 //    keyBind = new KeyBind;
 
-    for (int i{}; i < iKeysVec.size(); ++i)
-    {
-        ui->cbAction->addItem(actionsIndexes[i].second);
-//        ui->cbMod1->addItem(modsTranslator[iKeysVec[i].mod1]);
-//        ui->cbKey->addItem(keyTranslator[iKeysVec[i].key]);
-//        for (int j{}; j )
-//        ui->cbMod1->addItem(iKeysVec[i].);
 
-//        switch
-        //ui->cbMod1->addItem(iKeysVec[i].mod1);
-    }
+    for (int i{}; i < actionsIndexes.size(); ++i)
+        ui->cbAction->addItem(actionsIndexes[i].second);
+
+    for (int i{}; i < modsTranslator.size(); ++i)
+        ui->cbMod1->addItem(modsTranslator[i].second);
+
+    for (int i{}; i < modsTranslator.size(); ++i)
+        ui->cbMod2->addItem(modsTranslator[i].second);
+
+    for (int i{}; i < keyTranslator.size(); ++i)
+        ui->cbKey->addItem(keyTranslator[i].second);
+
+//    ui->cbAction->setCurrentIndex();
+//    ui->cbMod1->setCurrentIndex();
+
 }
 
 KeyBindDialog::~KeyBindDialog()
