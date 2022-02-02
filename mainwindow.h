@@ -6,8 +6,8 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
-#include <QVector>
-#include <functional>
+//#include <QVector>
+#include "main.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -15,14 +15,6 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 
-struct KeyBind {
-    Qt::KeyboardModifier mod1;
-    Qt::KeyboardModifier mod2;
-    Qt::Key key;
-   // int keyCode;
-
-};
-//struct KeyBind;
 
 class MainWindow : public QMainWindow
 {

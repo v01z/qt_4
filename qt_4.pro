@@ -18,6 +18,7 @@ SOURCES += \
 
 HEADERS += \
     keybinddialog.h \
+    main.h \
     mainwindow.h
 
 FORMS += \

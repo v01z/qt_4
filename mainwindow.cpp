@@ -1,6 +1,6 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QTranslator>
+//#include <QTranslator>
 #include "keybinddialog.h"
 #include <QDebug>
 
@@ -55,7 +55,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->actionKey_bindings->setText(tr("Сочетания клавиш"));
 
     ui->actionHelp->setText(tr("Помощь"));
-
 
 }
 
@@ -431,7 +430,8 @@ void MainWindow::actionChoosing(int vectorIndex)
 
 void MainWindow::on_actionKey_bindings_triggered()
 {
-    KeyBindDialog dialog;
+    //KeyBindDialog dialog;
+    KeyBindDialog dialog(keys);
     dialog.setModal(true);
     dialog.exec();
 }

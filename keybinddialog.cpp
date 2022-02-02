@@ -8,7 +8,26 @@ KeyBindDialog::KeyBindDialog(QWidget *parent) :
     ui->setupUi(this);
 }
 
+KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
+    KeyBindDialog(),
+    keysVec{}
+{
+
+    /*
+    for (int i{}; i < keysVec.size(); ++i)
+    {
+        ui->cbAction->addItem(keysVec[i].);
+    }
+    */
+}
+
 KeyBindDialog::~KeyBindDialog()
 {
     delete ui;
 }
+
+void KeyBindDialog::on_btnCancel_clicked()
+{
+   close();
+}
+
