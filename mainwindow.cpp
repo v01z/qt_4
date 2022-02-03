@@ -1,8 +1,6 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
-//#include <QTranslator>
 #include "keybinddialog.h"
-#include <QDebug>
 
 const QString FILE_NOT_FOUND { QObject::tr("Файл не найден") };
 const QString TXT_FILE_ONLY { QObject::tr ("Текстовый файл(*.txt)") };
@@ -219,15 +217,8 @@ void MainWindow::on_actionHelp_triggered()
 
     if (file->isOpen()) file->close();
 
-    ui->plainTextEdit->setPlainText(tr("Для открытия текстового файла нажмите \'Файл->Открыть\'.\n" \
-        "Для открытия его в режимя \'только для чтения\' нажмите соответствующий пункт меню.\n" \
-        "Далее более кратко:\n" \
-        "\'Сохранить\' и \'Сохранить как\' - сохранить файл со старым, либо новым именем "\
-        "соответственно.\n " \
-        "\'Выход\' - выход из программы\n" \
-        "\'Настройки->Язык\' - возможность сменить язык приложения.\n" \
-        "\'Сочетания клавиш\' - изменить комбинации клавиш по вкусу.\n" \
-        "\'?->Помощь\' - вывести эту справку."));
+    ui->plainTextEdit->setPlainText(
+        tr("Текстовый редактор с возможностью переключения языка интерфейса."));
 
 
      ui->statusbar->showMessage(tr("Краткая справка показана."));
