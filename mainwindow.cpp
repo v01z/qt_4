@@ -313,54 +313,6 @@ void MainWindow::on_actionEnglish_triggered()
 void MainWindow::keyReleaseEvent(QKeyEvent *event)
 {
 
-/*
-    if (event->modifiers().testFlag(Qt::ControlModifier))
-    {
-        switch (event->key())
-        {
-            case Qt::Key_O:
-                on_actionOpen_triggered();
-                break;
-            case Qt::Key_R:
-                if (event->modifiers().testFlag(Qt::ShiftModifier))
-                    on_actionRussian_triggered();
-                else
-                    on_actionOpen_read_only_mode_triggered();
-                break;
-            case Qt::Key_X:
-                on_actionClose_triggered();
-                break;
-            case Qt::Key_S:
-                if (!canSave) break;
-                if (event->modifiers().testFlag(Qt::ShiftModifier))
-                    on_actionSaveAs_triggered();
-                else
-                    on_actionSave_triggered();
-                break;
-            case Qt::Key_Q:
-                on_actionExit_triggered();
-                break;
-            case Qt::Key_E:
-                if (event->modifiers().testFlag(Qt::ShiftModifier))
-                    on_actionEnglish_triggered();
-                break;
-            case Qt::Key_H:
-                on_actionHelp_triggered();
-                break;
-            case Qt::Key_K:
-                if (event->modifiers().testFlag(Qt::ShiftModifier))
-                    on_actionKey_bindings_triggered();
-                break;
-        }
-    }
-
-    if (event->key() == Qt::Key_F3)
-        on_actionOpen_read_only_mode_triggered();
-*/
-
-   // KeyBind inputKey { Qt::KeyboardModifier(event->modifiers()), event->key() };
-    //Qt::Key tempKey = event->key();
-
 //    for (const auto &elem : keys)
     bool weHaveThisKey{ false };
     int i{};
@@ -434,8 +386,9 @@ void MainWindow::actionChoosing(int vectorIndex)
 
 void MainWindow::on_actionKey_bindings_triggered()
 {
-    //KeyBindDialog dialog;
-    KeyBindDialog dialog(keys);
+    //KeyBindDialog dialog(keys);
+    //KeyBindDialog dialog(&keys);
+    KeyBindDialog dialog(&keys);
     dialog.setModal(true);
     dialog.exec();
 }

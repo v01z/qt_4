@@ -21,7 +21,7 @@ class KeyBindDialog : public QDialog
 
 public:
     explicit KeyBindDialog(QWidget *parent = nullptr);
-    explicit KeyBindDialog(QVector<KeyBind>&);
+    explicit KeyBindDialog(QVector<KeyBind>*);
     ~KeyBindDialog();
 
     void updateInterface(int);
@@ -36,7 +36,7 @@ private slots:
 private:
     Ui::KeyBindDialog *ui;
 //    QVector<KeyBind> *keysVec;
-    QVector<KeyBind> keyBind;
+    QVector<KeyBind> *keyBind;
 };
 
 //Warning: The order should be the same as filling QVector

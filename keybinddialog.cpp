@@ -8,7 +8,7 @@ KeyBindDialog::KeyBindDialog(QWidget *parent) :
     ui->setupUi(this);
 }
 
-KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
+KeyBindDialog::KeyBindDialog(QVector<KeyBind> *iKeysVec) :
     KeyBindDialog()
 //    keyBind { iKeysVec }
 {
@@ -60,7 +60,8 @@ void KeyBindDialog::updateInterface(int index)
  //   int modIndx{};
     for (int i{}; i < modsTranslator.size(); ++i)
     {
-       if (keyBind[index].mod1 == modsTranslator[i].first)
+       //if (keyBind[index]->mod1 == modsTranslator[i].first)
+       if (keyBind->at(index).mod1 == modsTranslator[i].first)
        {
            ui->cbMod1->setCurrentText(modsTranslator[i].second);
            break;
@@ -69,7 +70,8 @@ void KeyBindDialog::updateInterface(int index)
 
     for (int i{}; i < modsTranslator.size(); ++i)
     {
-       if (keyBind[index].mod2 == modsTranslator[i].first)
+       //if (keyBind[index].mod2 == modsTranslator[i].first)
+       if (keyBind->at(index).mod2 == modsTranslator[i].first)
        {
            ui->cbMod2->setCurrentText(modsTranslator[i].second);
            break;
@@ -78,7 +80,8 @@ void KeyBindDialog::updateInterface(int index)
 
     for (int i{}; i < keyTranslator.size(); ++i)
     {
-       if (keyBind[index].key == keyTranslator[i].first)
+       //if (keyBind[index].key == keyTranslator[i].first)
+       if (keyBind->at(index).key == keyTranslator[i].first)
        {
            ui->cbKey->setCurrentText(keyTranslator[i].second);
            break;
@@ -123,6 +126,12 @@ void KeyBindDialog::on_btnOk_clicked()
         }
     }
 
-    keyBind[ui->cbAction->currentIndex()] = tempKey;
+    //keyBind[ui->cbAction->currentIndex()] = tempKey;
+//    keyBind->at(ui->cbAction->currentIndex()) = tempKey;
+
+    keyBind->at(ui->cbAction->currentIndex()).mod1 = tempKey.mod1;
+    keyBind->at(ui->cbAction->currentIndex()).mod2 = tempKey.mod2;
+    keyBind->at(ui->cbAction->currentIndex()).key = tempKey.key;
+
 }
 

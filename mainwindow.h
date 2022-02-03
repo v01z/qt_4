@@ -6,7 +6,6 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
-//#include <QVector>
 #include "main.h"
 
 
@@ -60,28 +59,5 @@ protected:
     void keyReleaseEvent(QKeyEvent*) override;
 
 };
-
-/*
-struct KeyBind {
-    Qt::KeyboardModifier mod1;
-    Qt::KeyboardModifier mod2;
-    Qt::Key key;
-//    void (MainWindow::*action)(void);
-    std::function<void> MainWindow::*action();
-
-};
-*/
-
-//struct KeyBind {
-  //  Qt::KeyboardModifier mod1;
-   // Qt::KeyboardModifier mod2;
-  //  int keyCode;
-//    void (*action)();
-//    std::function<void> action()const;
-//    void (MainWindow::*action)();
-//    std::function<void()> MainWindow::*action();
-//    void (MainWindow::*action)(void);
-
-//};
 
 #endif // MAINWINDOW_H
