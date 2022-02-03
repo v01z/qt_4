@@ -93,13 +93,13 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="129"/>
-        <location filename="mainwindow.cpp" line="47"/>
+        <location filename="mainwindow.cpp" line="45"/>
         <source>Русский</source>
         <translation type="unfinished">Russian</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="137"/>
-        <location filename="mainwindow.cpp" line="48"/>
+        <location filename="mainwindow.cpp" line="46"/>
         <source>Английский</source>
         <translation type="unfinished">English</translation>
     </message>
@@ -124,87 +124,91 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="34"/>
+        <location filename="mainwindow.cpp" line="32"/>
         <source>Домашняя работа №4</source>
         <translation type="unfinished">Homework N4</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="36"/>
+        <location filename="mainwindow.cpp" line="34"/>
         <source>Файл</source>
         <translation type="unfinished">File</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="37"/>
+        <location filename="mainwindow.cpp" line="35"/>
         <source>Открыть</source>
         <translation type="unfinished">Open</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="38"/>
+        <location filename="mainwindow.cpp" line="36"/>
         <source>Открыть только для чтения</source>
         <translation type="unfinished">Open read only</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="39"/>
+        <location filename="mainwindow.cpp" line="37"/>
         <source>Закрыть</source>
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="40"/>
+        <location filename="mainwindow.cpp" line="38"/>
         <source>Сохранить</source>
         <translation type="unfinished">Save</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="41"/>
+        <location filename="mainwindow.cpp" line="39"/>
         <source>Сохранить как</source>
         <translation type="unfinished">Save as</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="42"/>
+        <location filename="mainwindow.cpp" line="40"/>
         <source>Выход</source>
         <translation type="unfinished">Exit</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="44"/>
+        <location filename="mainwindow.cpp" line="42"/>
         <source>Настройки</source>
         <translation type="unfinished">Settings</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="46"/>
+        <location filename="mainwindow.cpp" line="44"/>
         <source>Язык</source>
         <translation type="unfinished">Language</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="50"/>
+        <location filename="mainwindow.cpp" line="48"/>
         <source>Сочетания клавиш</source>
         <translation type="unfinished">Key bindings</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="52"/>
+        <location filename="mainwindow.cpp" line="50"/>
         <source>Помощь</source>
         <translation type="unfinished">Help</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="134"/>
+        <location filename="mainwindow.cpp" line="132"/>
         <source> открыт в режиме &apos;только для чтения&apos;.</source>
         <translation type="unfinished"> has been opened read only.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="167"/>
+        <location filename="mainwindow.cpp" line="165"/>
         <source> сохранён.</source>
         <translation type="unfinished"> has been saved.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="183"/>
+        <location filename="mainwindow.cpp" line="181"/>
         <source>Сохранить файл как</source>
         <translation type="unfinished">Save file as</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="198"/>
+        <location filename="mainwindow.cpp" line="196"/>
         <source>Файл сохранён как </source>
         <translation type="unfinished">File saved as </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="222"/>
+        <location filename="mainwindow.cpp" line="221"/>
+        <source>Текстовый редактор с возможностью переключения языка интерфейса.</source>
+        <translation type="unfinished">Text editor that can be used in both languages - Russian and English.</translation>
+    </message>
+    <message>
         <source>Для открытия текстового файла нажмите &apos;Файл-&gt;Открыть&apos;.
 Для открытия его в режимя &apos;только для чтения&apos; нажмите соответствующий пункт меню.
 Далее более кратко:
@@ -213,7 +217,7 @@
 &apos;Настройки-&gt;Язык&apos; - возможность сменить язык приложения.
 &apos;Сочетания клавиш&apos; - изменить комбинации клавиш по вкусу.
 &apos;?-&gt;Помощь&apos; - вывести эту справку.</source>
-        <translation type="unfinished">To open text file press \&apos;File-&gt;Open\&apos;.
+        <translation type="obsolete">To open text file press \&apos;File-&gt;Open\&apos;.
 To open it in read only mode press appropriate menu item.
 Further more briefly:
 \&apos;Save\&apos; and \&apos;Save as\&apos; - save file having the same name or change to a new one.
@@ -222,7 +226,7 @@ Further more briefly:
 \&apos;?-&gt;Help\&apos; - this help tip will be shown.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="233"/>
+        <location filename="mainwindow.cpp" line="224"/>
         <source>Краткая справка показана.</source>
         <translation type="unfinished">Short help has been shown.</translation>
     </message>
@@ -230,27 +234,27 @@ Further more briefly:
 <context>
     <name>QObject</name>
     <message>
-        <location filename="mainwindow.cpp" line="7"/>
+        <location filename="mainwindow.cpp" line="5"/>
         <source>Файл не найден</source>
         <translation type="unfinished">File not found</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="8"/>
+        <location filename="mainwindow.cpp" line="6"/>
         <source>Текстовый файл(*.txt)</source>
         <translation type="unfinished">Text file(*.txt)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="9"/>
+        <location filename="mainwindow.cpp" line="7"/>
         <source>Выберите файл для открытия</source>
         <translation type="unfinished">Choose file to open</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="10"/>
+        <location filename="mainwindow.cpp" line="8"/>
         <source>Не могу открыть файл </source>
         <translation type="unfinished">Can&apos;t open file </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="11"/>
+        <location filename="mainwindow.cpp" line="9"/>
         <source>Файл </source>
         <translation type="unfinished">File </translation>
     </message>
