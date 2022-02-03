@@ -31,6 +31,8 @@ private slots:
 
     void on_cbAction_activated(const QString &arg1);
 
+    void on_btnOk_clicked();
+
 private:
     Ui::KeyBindDialog *ui;
 //    QVector<KeyBind> *keysVec;
