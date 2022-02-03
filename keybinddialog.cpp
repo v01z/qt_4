@@ -10,9 +10,10 @@ KeyBindDialog::KeyBindDialog(QWidget *parent) :
 
 KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
     KeyBindDialog()
-//    keysVec{}
+//    keyBind { iKeysVec }
 {
 //    keyBind = new KeyBind;
+    keyBind = iKeysVec;
 
 
     //Unite these four to one function
@@ -34,7 +35,11 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
 //    ui->cbKey->setCurrentIndex(3);
 //    ui->cbAction->setCurrentIndex(0);
  //   ui->cbMod1->setCurrentIndex();
-    updateInterface(iKeysVec);
+
+    ui->cbAction->setCurrentIndex(0);
+    assert(ui->cbAction->currentText() == actionsIndexes[0].second);
+
+    updateInterface(0);
 
 }
 
@@ -49,10 +54,50 @@ void KeyBindDialog::on_btnCancel_clicked()
    close();
 }
 
-void KeyBindDialog::updateInterface(QVector<KeyBind> &iKeyBind)
+void KeyBindDialog::updateInterface(int index)
 {
-    ui->cbAction->setCurrentIndex(0);
-    assert(ui->cbAction->currentText() == actionsIndexes[0].second);
+
+ //   int modIndx{};
+    for (int i{}; i < modsTranslator.size(); ++i)
+    {
+       if (keyBind[index].mod1 == modsTranslator[i].first)
+       {
+           qDebug() << "match 1";
+           ui->cbMod1->setCurrentText(modsTranslator[i].second);
+           break;
+       }
+    }
+
+    for (int i{}; i < modsTranslator.size(); ++i)
+    {
+       if (keyBind[index].mod2 == modsTranslator[i].first)
+       {
+           qDebug() << "match 2";
+           ui->cbMod2->setCurrentText(modsTranslator[i].second);
+           break;
+       }
+    }
+
+    for (int i{}; i < keyTranslator.size(); ++i)
+    {
+       if (keyBind[index].key == keyTranslator[i].first)
+       {
+           qDebug() << "match 3";
+           ui->cbKey->setCurrentText(keyTranslator[i].second);
+           break;
+       }
+    }
+
+ //   ui->cbMod1->setCurrentIndex(index);
+//    ui->cbMod2->setCurrentIndex(index);
+  //  ui->cbKey->setCurrentIndex(index);
 
 //    ui->cbMod1->setCurrentText();
 }
+
+void KeyBindDialog::on_cbAction_activated(const QString &arg1)
+{
+ //  updateInterface(ui->cbAction->currentIndex());
+    updateInterface(ui->cbAction->currentIndex());
+}
+

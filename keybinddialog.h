@@ -24,15 +24,17 @@ public:
     explicit KeyBindDialog(QVector<KeyBind>&);
     ~KeyBindDialog();
 
-    void updateInterface(QVector<KeyBind>&);
+    void updateInterface(int);
 
 private slots:
     void on_btnCancel_clicked();
 
+    void on_cbAction_activated(const QString &arg1);
+
 private:
     Ui::KeyBindDialog *ui;
 //    QVector<KeyBind> *keysVec;
-//    KeyBind *keyBind;
+    QVector<KeyBind> keyBind;
 };
 
 //Warning: The order should be the same as filling QVector
@@ -74,9 +76,11 @@ const QVector<QPair<Qt::Key, QString>> keyTranslator  {
     { Qt::Key_D, "D" },
     { Qt::Key_E, "E" },
     { Qt::Key_H, "H" },
+    { Qt::Key_K, "K" },
     { Qt::Key_O, "O" },
     { Qt::Key_Q, "Q" },
     { Qt::Key_R, "R" },
+    { Qt::Key_S, "S" },
     { Qt::Key_X, "X" },
     { Qt::Key_F1, "F1" },
     { Qt::Key_F2, "F2" },
