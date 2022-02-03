@@ -147,19 +147,8 @@ void MainWindow::on_actionSave_triggered()
     if (file->isOpen())
     {
         QTextStream stream(file);
-     //   QTextStream stream(file, QIODevice::ReadWrite | QIODevice::Truncate);
-//        QTextStream stream(file, QIODevice::ReadWrite | QIODevice::Truncate);
-
-        //file.write(mystring.toUtf8());
-
-        //uncomment
+        stream.seek(0);
         stream << ui->plainTextEdit->toPlainText();
-
-        //works like <<
-        /*
-        file->write(ui->plainTextEdit->toPlainText().toUtf8(),
-            ui->plainTextEdit->toPlainText().toUtf8().length());
-            */
 
         ui->statusbar->showMessage(FILE_SPACE + file->fileName() +
             tr(" сохранён."));
