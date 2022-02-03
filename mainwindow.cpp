@@ -388,8 +388,11 @@ void MainWindow::on_actionKey_bindings_triggered()
 //    keys[dialog.getNewBinding().second] = dialog.getNewBinding().first;
     int i = dialog.getNewBinding().second;
     KeyBind tempkey = dialog.getNewBinding().first;
+    qDebug() << "***********************";
     qDebug () << "int = " << i;
     qDebug() << tempkey.key;
+    qDebug() << tempkey.mod1;
+    qDebug() << tempkey.mod2;
 
 }
 

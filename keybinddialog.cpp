@@ -105,9 +105,10 @@ void KeyBindDialog::on_btnOk_clicked()
         }
     }
 
+    qDebug() << "keyTranslator size is " << keyTranslator.size();
     for (int i{}; i < keyTranslator.size(); ++i)
     {
-        if (keyTranslator[i].second == ui->cbAction->currentText())
+        if (keyTranslator[i].second == ui->cbKey->currentText())
         {
             newKeyBind.first.key = keyTranslator[i].first;
             qDebug() << "From dialog class: " << newKeyBind.first.key;
@@ -115,7 +116,8 @@ void KeyBindDialog::on_btnOk_clicked()
         }
     }
 
-    qDebug() << newKeyBind.second << " ----> from dialog class";
+    qDebug() << newKeyBind.second << " its index from dialog class";
+    qDebug() << newKeyBind.first.key << " its key from dialog klass";
     close();
 }
 
