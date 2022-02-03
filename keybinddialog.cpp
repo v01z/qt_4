@@ -54,7 +54,7 @@ void KeyBindDialog::on_btnCancel_clicked()
    close();
 }
 
-void KeyBindDialog::updateInterface(int index)
+void KeyBindDialog::updateInterface(int index) const
 {
 
  //   int modIndx{};
@@ -97,13 +97,13 @@ void KeyBindDialog::on_cbAction_activated(const QString &arg1)
 
 void KeyBindDialog::on_btnOk_clicked()
 {
-    KeyBind tempKey{};
+ //   KeyBind tempKey{};
 
     for (int i{}; i < modsTranslator.size(); ++i)
     {
         if (modsTranslator[i].second == ui->cbMod1->currentText())
         {
-            tempKey.mod1 = modsTranslator[i].first;
+            newKeyBind.mod1 = modsTranslator[i].first;
             break;
         }
     }
@@ -112,7 +112,7 @@ void KeyBindDialog::on_btnOk_clicked()
     {
         if (modsTranslator[i].second == ui->cbMod2->currentText())
         {
-            tempKey.mod2 = modsTranslator[i].first;
+            newKeyBind.mod2 = modsTranslator[i].first;
             break;
         }
     }
@@ -121,7 +121,7 @@ void KeyBindDialog::on_btnOk_clicked()
     {
         if (keyTranslator[i].second == ui->cbAction->currentText())
         {
-            tempKey.key = keyTranslator[i].first;
+            newKeyBind.key = keyTranslator[i].first;
             break;
         }
     }
@@ -129,9 +129,14 @@ void KeyBindDialog::on_btnOk_clicked()
     //keyBind[ui->cbAction->currentIndex()] = tempKey;
 //    keyBind->at(ui->cbAction->currentIndex()) = tempKey;
 
+    /*
     keyBind->at(ui->cbAction->currentIndex()).mod1 = tempKey.mod1;
     keyBind->at(ui->cbAction->currentIndex()).mod2 = tempKey.mod2;
     keyBind->at(ui->cbAction->currentIndex()).key = tempKey.key;
+    */
 
 }
 
+const KeyBind &KeyBindDialog::getNewBinding() const {
+   return newKeyBind;
+}

@@ -24,7 +24,9 @@ public:
     explicit KeyBindDialog(QVector<KeyBind>*);
     ~KeyBindDialog();
 
-    void updateInterface(int);
+    void updateInterface(int) const;
+
+    const KeyBind &getNewBinding() const;
 
 private slots:
     void on_btnCancel_clicked();
@@ -37,6 +39,7 @@ private:
     Ui::KeyBindDialog *ui;
 //    QVector<KeyBind> *keysVec;
     QVector<KeyBind> *keyBind;
+    KeyBind newKeyBind;
 };
 
 //Warning: The order should be the same as filling QVector

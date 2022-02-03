@@ -391,5 +391,7 @@ void MainWindow::on_actionKey_bindings_triggered()
     KeyBindDialog dialog(&keys);
     dialog.setModal(true);
     dialog.exec();
+
+//    QDialog() << dialog.getNewBinding().key.tex
 }
 
