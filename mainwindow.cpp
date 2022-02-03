@@ -153,6 +153,8 @@ void MainWindow::on_actionSave_triggered()
 //        QTextStream stream(file, QIODevice::ReadWrite | QIODevice::Truncate);
 
         //file.write(mystring.toUtf8());
+
+        //uncomment
         stream << ui->plainTextEdit->toPlainText();
 
         //works like <<
