@@ -150,6 +150,7 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="38"/>
+        <location filename="mainwindow.cpp" line="216"/>
         <source>Сохранить</source>
         <translation type="unfinished"></translation>
     </message>
@@ -189,27 +190,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="165"/>
+        <location filename="mainwindow.cpp" line="154"/>
         <source> сохранён.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="181"/>
+        <location filename="mainwindow.cpp" line="172"/>
         <source>Сохранить файл как</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="196"/>
+        <location filename="mainwindow.cpp" line="187"/>
         <source>Файл сохранён как </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="221"/>
+        <location filename="mainwindow.cpp" line="211"/>
+        <source>Текст изменён.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="212"/>
+        <source>Хотите его сохранить?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="217"/>
+        <source>Отмена</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="218"/>
+        <source>Выйти без сохранения</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="249"/>
         <source>Текстовый редактор с возможностью переключения языка интерфейса.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="224"/>
+        <location filename="mainwindow.cpp" line="252"/>
         <source>Краткая справка показана.</source>
         <translation type="unfinished"></translation>
     </message>

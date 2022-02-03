@@ -144,7 +144,7 @@ void MainWindow::on_actionOpen_read_only_mode_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
-    if (file->isOpen())
+    if (file->isOpen() && canSave)
     {
         QTextStream stream(file);
         stream.seek(0);
@@ -152,12 +152,14 @@ void MainWindow::on_actionSave_triggered()
 
         ui->statusbar->showMessage(FILE_SPACE + file->fileName() +
             tr(" сохранён."));
-
     }
     else
         //на случай, если юзер захочет вывести help-text
         //в файл, а также создать новый текст и сохранить его
+    {
         on_actionSaveAs_triggered();
+        ui->actionClose->setEnabled(true);
+    }
 }
 
 
@@ -197,7 +199,44 @@ void MainWindow::on_actionSaveAs_triggered()
 
 void MainWindow::on_actionExit_triggered()
 {
-   QApplication::quit();
+   if (textModified)
+   {
+       /*
+        QMessageBox msgBox;
+        msgBox.setText(tr("Текст изменён."));
+        msgBox.setInformativeText(tr("Хотите его сохранить?"));
+        */
+
+       QMessageBox msgBox(QMessageBox::Question,
+                   tr("Текст изменён."),
+                   tr("Хотите его сохранить?"),
+                   QMessageBox::Save| QMessageBox::Cancel | QMessageBox::Discard,
+                   this);
+
+        msgBox.setButtonText(QMessageBox::Save, tr("Сохранить"));
+        msgBox.setButtonText(QMessageBox::Cancel, tr("Отмена"));
+        msgBox.setButtonText(QMessageBox::Discard, tr("Выйти без сохранения"));
+
+//        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
+
+        switch (ret) {
+          case QMessageBox::Save:
+                on_actionSave_triggered();
+                break;
+          case QMessageBox::Discard:
+                QApplication::quit();
+                break;
+          case QMessageBox::Cancel:
+              break;
+          default:
+              //Недоступное ни в какое время место xD
+              break;
+        }
+   }
+   else
+       QApplication::quit();
 }
 
 
@@ -236,13 +275,13 @@ void MainWindow::disableSave(bool disableIt)
     {
         canSave = false;
         ui->actionSave->setEnabled(false);
-        ui->actionSaveAs->setEnabled(false);
+       // ui->actionSaveAs->setEnabled(false);
     }
     else
     {
         canSave = true;
         ui->actionSave->setEnabled(true);
-        ui->actionSaveAs->setEnabled(true);
+        //ui->actionSaveAs->setEnabled(true);
 
     }
 }
@@ -368,4 +407,7 @@ void MainWindow::on_actionKey_bindings_triggered()
     keys[dialog.getNewBinding().second] = dialog.getNewBinding().first;
 
 }
+
+
+
 
