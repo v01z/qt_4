@@ -14,7 +14,7 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> *iKeysVec) :
 {
     keyBind = iKeysVec;
 
-    //Unite these four to one function
+    //Unite these four loops to one function in the future
     for (int i{}; i < actionsIndexes.size(); ++i)
         ui->cbAction->addItem(actionsIndexes[i].second);
 
@@ -46,6 +46,8 @@ void KeyBindDialog::on_btnCancel_clicked()
 void KeyBindDialog::updateInterface(int index) const
 {
 
+    //These loops could also possible be united in
+    //a more smaller code, но так пока нагляднее
     for (int i{}; i < modsTranslator.size(); ++i)
     {
        if (keyBind->at(index).mod1 == modsTranslator[i].first)
@@ -80,6 +82,9 @@ void KeyBindDialog::on_cbAction_activated(const QString &arg1)
 }
 
 
+//Заметка на будущее развитие: здесь нет проверок на затирание
+//других, уже имеющихся для других целей комбинаций как для
+//самой программы, так и для системы в целом.
 void KeyBindDialog::on_btnOk_clicked()
 {
 
@@ -90,7 +95,6 @@ void KeyBindDialog::on_btnOk_clicked()
         if (modsTranslator[i].second == ui->cbMod1->currentText())
         {
             newKeyBind.first.mod1 = modsTranslator[i].first;
-            qDebug() << "From dialog class: mod1: " << newKeyBind.first.mod1;
             break;
         }
     }
@@ -100,24 +104,19 @@ void KeyBindDialog::on_btnOk_clicked()
         if (modsTranslator[i].second == ui->cbMod2->currentText())
         {
             newKeyBind.first.mod2 = modsTranslator[i].first;
-            qDebug() << "From dialog class: mod2:" << newKeyBind.first.mod2;
             break;
         }
     }
 
-    qDebug() << "keyTranslator size is " << keyTranslator.size();
     for (int i{}; i < keyTranslator.size(); ++i)
     {
         if (keyTranslator[i].second == ui->cbKey->currentText())
         {
             newKeyBind.first.key = keyTranslator[i].first;
-            qDebug() << "From dialog class: " << newKeyBind.first.key;
             break;
         }
     }
 
-    qDebug() << newKeyBind.second << " its index from dialog class";
-    qDebug() << newKeyBind.first.key << " its key from dialog klass";
     close();
 }
 

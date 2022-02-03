@@ -380,9 +380,10 @@ void MainWindow::on_actionKey_bindings_triggered()
     dialog.setModal(true);
     dialog.exec();
 
-//    qDebug() << dialog.getNewBinding().second;
-    //keys.at(dialog.getNewBinding().second) = dialog.getNewBinding().first;
+    //error: passing 'const KeyBind' as 'this' argument discards qualifiers [-fpermissive]
+//    keys.at(dialog.getNewBinding().second) = dialog.getNewBinding().first;
 
     keys[dialog.getNewBinding().second] = dialog.getNewBinding().first;
+
 }
 
