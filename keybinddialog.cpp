@@ -15,6 +15,7 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
 //    keyBind = new KeyBind;
 
 
+    //Unite these four to one function
     for (int i{}; i < actionsIndexes.size(); ++i)
         ui->cbAction->addItem(actionsIndexes[i].second);
 
@@ -30,6 +31,10 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> &iKeysVec) :
     //Create func that takes one argument - KeyBind and update all interface исходя из этого
 //    ui->cbAction->setCurrentIndex();
 //    ui->cbMod1->setCurrentIndex();
+//    ui->cbKey->setCurrentIndex(3);
+//    ui->cbAction->setCurrentIndex(0);
+ //   ui->cbMod1->setCurrentIndex();
+    updateInterface(iKeysVec);
 
 }
 
@@ -44,3 +49,10 @@ void KeyBindDialog::on_btnCancel_clicked()
    close();
 }
 
+void KeyBindDialog::updateInterface(QVector<KeyBind> &iKeyBind)
+{
+    ui->cbAction->setCurrentIndex(0);
+    assert(ui->cbAction->currentText() == actionsIndexes[0].second);
+
+//    ui->cbMod1->setCurrentText();
+}

@@ -24,6 +24,8 @@ public:
     explicit KeyBindDialog(QVector<KeyBind>&);
     ~KeyBindDialog();
 
+    void updateInterface(QVector<KeyBind>&);
+
 private slots:
     void on_btnCancel_clicked();
 
