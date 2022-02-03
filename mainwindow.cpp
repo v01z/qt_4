@@ -15,18 +15,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow),
       file(new QFile()), canSave(true)
 {
-    //keys.push_back( KeyBind(Qt::ControlModifier, nullptr, Qt::Key_O,
-//    keys.push_back( KeyBind(Qt::ControlModifier, Qt::ShiftModifier, Qt::Key_O,
-    //keys.push_back((this->*on_actionOpen_triggered)());
-//        on_actionOpen_triggered()));
-    //keys.push_back((*on_actionOpen_triggered)());
-    //keys.push_back((this->*on_actionOpen_triggered)());
-
-//    keys.push_back( { Qt::KeyboardModifier(Qt::ControlModifier & Qt::NoModifier), Qt::Key_O} );    // 0 - Open
-
     //Warning: Do not change the order of pushing elements. It corresponds
-    //vector 'actionsIndexes' (see keybinddialog.h). In case to avoid mismatches
-    //the vector 'keys' has to be initialized from vector 'actionsIndexes' somehow.
+    //vector 'actionsIndexes' (see keybinddialog.h). To avoid mismatches the
+    //vector 'keys' has to be initialized from vector 'actionsIndexes' somehow.
     keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_O} );    // 0 - Open
     keys.push_back( { Qt::ControlModifier, Qt::ShiftModifier, Qt::Key_R} ); // 1 - Rus
     keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_R} );	// 2 - read-only
@@ -87,7 +78,6 @@ void MainWindow::on_actionOpen_triggered()
                     file->close();
 
              file->setFileName(filePath);
-//             if (file->open(QFile::ReadWrite | QFile::ExistingOnly | QIODevice::Truncate | QIODevice::Text))
              if (file->open(QFile::ReadWrite | QFile::ExistingOnly))
              {
                  QTextStream stream(file);
@@ -316,6 +306,7 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event)
 //    for (const auto &elem : keys)
     bool weHaveThisKey{ false };
     int i{};
+
     for (; i < keys.size(); ++i)
     {
         if ((event->key() == keys[i].key) && event->modifiers().testFlag(keys[i].mod1) &&
@@ -386,12 +377,19 @@ void MainWindow::actionChoosing(int vectorIndex)
 
 void MainWindow::on_actionKey_bindings_triggered()
 {
-    //KeyBindDialog dialog(keys);
-    //KeyBindDialog dialog(&keys);
     KeyBindDialog dialog(&keys);
     dialog.setModal(true);
     dialog.exec();
 
-//    QDialog() << dialog.getNewBinding().key.tex
+//    qDebug() << dialog.getNewBinding().second;
+    //keys.at(dialog.getNewBinding().second) = dialog.getNewBinding().first;
+
+    //не захотел
+//    keys[dialog.getNewBinding().second] = dialog.getNewBinding().first;
+    int i = dialog.getNewBinding().second;
+    KeyBind tempkey = dialog.getNewBinding().first;
+    qDebug () << "int = " << i;
+    qDebug() << tempkey.key;
+
 }
 

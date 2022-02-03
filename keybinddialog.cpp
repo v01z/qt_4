@@ -3,18 +3,16 @@
 
 KeyBindDialog::KeyBindDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::KeyBindDialog)
+    ui(new Ui::KeyBindDialog),
+    keyBind { nullptr }
 {
     ui->setupUi(this);
 }
 
 KeyBindDialog::KeyBindDialog(QVector<KeyBind> *iKeysVec) :
     KeyBindDialog()
-//    keyBind { iKeysVec }
 {
-//    keyBind = new KeyBind;
     keyBind = iKeysVec;
-
 
     //Unite these four to one function
     for (int i{}; i < actionsIndexes.size(); ++i)
@@ -29,23 +27,14 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> *iKeysVec) :
     for (int i{}; i < keyTranslator.size(); ++i)
         ui->cbKey->addItem(keyTranslator[i].second);
 
-    //Create func that takes one argument - KeyBind and update all interface исходя из этого
-//    ui->cbAction->setCurrentIndex();
-//    ui->cbMod1->setCurrentIndex();
-//    ui->cbKey->setCurrentIndex(3);
-//    ui->cbAction->setCurrentIndex(0);
- //   ui->cbMod1->setCurrentIndex();
-
     ui->cbAction->setCurrentIndex(0);
     assert(ui->cbAction->currentText() == actionsIndexes[0].second);
-
     updateInterface(0);
 
 }
 
 KeyBindDialog::~KeyBindDialog()
 {
-  //  delete keyBind;
     delete ui;
 }
 
@@ -57,10 +46,8 @@ void KeyBindDialog::on_btnCancel_clicked()
 void KeyBindDialog::updateInterface(int index) const
 {
 
- //   int modIndx{};
     for (int i{}; i < modsTranslator.size(); ++i)
     {
-       //if (keyBind[index]->mod1 == modsTranslator[i].first)
        if (keyBind->at(index).mod1 == modsTranslator[i].first)
        {
            ui->cbMod1->setCurrentText(modsTranslator[i].second);
@@ -70,7 +57,6 @@ void KeyBindDialog::updateInterface(int index) const
 
     for (int i{}; i < modsTranslator.size(); ++i)
     {
-       //if (keyBind[index].mod2 == modsTranslator[i].first)
        if (keyBind->at(index).mod2 == modsTranslator[i].first)
        {
            ui->cbMod2->setCurrentText(modsTranslator[i].second);
@@ -80,7 +66,6 @@ void KeyBindDialog::updateInterface(int index) const
 
     for (int i{}; i < keyTranslator.size(); ++i)
     {
-       //if (keyBind[index].key == keyTranslator[i].first)
        if (keyBind->at(index).key == keyTranslator[i].first)
        {
            ui->cbKey->setCurrentText(keyTranslator[i].second);
@@ -97,13 +82,15 @@ void KeyBindDialog::on_cbAction_activated(const QString &arg1)
 
 void KeyBindDialog::on_btnOk_clicked()
 {
- //   KeyBind tempKey{};
+
+    newKeyBind.second = ui->cbAction->currentIndex();
 
     for (int i{}; i < modsTranslator.size(); ++i)
     {
         if (modsTranslator[i].second == ui->cbMod1->currentText())
         {
-            newKeyBind.mod1 = modsTranslator[i].first;
+            newKeyBind.first.mod1 = modsTranslator[i].first;
+            qDebug() << "From dialog class: mod1: " << newKeyBind.first.mod1;
             break;
         }
     }
@@ -112,7 +99,8 @@ void KeyBindDialog::on_btnOk_clicked()
     {
         if (modsTranslator[i].second == ui->cbMod2->currentText())
         {
-            newKeyBind.mod2 = modsTranslator[i].first;
+            newKeyBind.first.mod2 = modsTranslator[i].first;
+            qDebug() << "From dialog class: mod2:" << newKeyBind.first.mod2;
             break;
         }
     }
@@ -121,22 +109,17 @@ void KeyBindDialog::on_btnOk_clicked()
     {
         if (keyTranslator[i].second == ui->cbAction->currentText())
         {
-            newKeyBind.key = keyTranslator[i].first;
+            newKeyBind.first.key = keyTranslator[i].first;
+            qDebug() << "From dialog class: " << newKeyBind.first.key;
             break;
         }
     }
 
-    //keyBind[ui->cbAction->currentIndex()] = tempKey;
-//    keyBind->at(ui->cbAction->currentIndex()) = tempKey;
-
-    /*
-    keyBind->at(ui->cbAction->currentIndex()).mod1 = tempKey.mod1;
-    keyBind->at(ui->cbAction->currentIndex()).mod2 = tempKey.mod2;
-    keyBind->at(ui->cbAction->currentIndex()).key = tempKey.key;
-    */
-
+    qDebug() << newKeyBind.second << " ----> from dialog class";
+    close();
 }
 
-const KeyBind &KeyBindDialog::getNewBinding() const {
+const QPair<KeyBind, int> &KeyBindDialog::getNewBinding() const {
+
    return newKeyBind;
 }

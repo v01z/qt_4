@@ -8,13 +8,6 @@ namespace Ui {
 class KeyBindDialog;
 }
 
-/*
-struct DataToView{
-    KeyBind kbData;
-    QPair<int, QString> viewPair;
-};
-*/
-
 class KeyBindDialog : public QDialog
 {
     Q_OBJECT
@@ -26,7 +19,7 @@ public:
 
     void updateInterface(int) const;
 
-    const KeyBind &getNewBinding() const;
+    const QPair<KeyBind, int> &getNewBinding() const;
 
 private slots:
     void on_btnCancel_clicked();
@@ -37,9 +30,8 @@ private slots:
 
 private:
     Ui::KeyBindDialog *ui;
-//    QVector<KeyBind> *keysVec;
     QVector<KeyBind> *keyBind;
-    KeyBind newKeyBind;
+    QPair<KeyBind, int> newKeyBind;
 };
 
 //Warning: The order should be the same as filling QVector
@@ -59,22 +51,17 @@ const QVector <QPair <int, QString> > actionsIndexes = {
 
 };
 
-//Пока тут будет два модификатора, потом можно дополнить
-//const QMap<Qt::KeyboardModifier, QString> modsTranslator  {
+//Пока тут будет три модификатора, потом можно дополнить
 const QVector<QPair<Qt::KeyboardModifier, QString>> modsTranslator  {
-//const std::map<Qt::KeyboardModifier, QString> modsTranslator  {
+//const QMap<Qt::KeyboardModifier, QString> modsTranslator  {
     { Qt::NoModifier, QObject::tr("Пусто") },
     { Qt::ControlModifier, "Cntrl" },
     { Qt::ShiftModifier, "Shift" }
 };
 
 //Тут тоже пока не вся клава
-//const QPair <Qt::Key, QString> keysTranslator [] = {
-//const QMap <Qt::Key, QString> keyTranslator  {
 const QVector<QPair<Qt::Key, QString>> keyTranslator  {
 //const std::map <Qt::Key, QString> keyTranslator  {
-//const QVector <QPair<Qt::Key, QString> > keyTranslator  {
-//const std::vector<QPair<Qt::Key, QString> > keyTranslator  {
     { Qt::Key_A, "A" },
     { Qt::Key_B, "B" },
     { Qt::Key_C, "C" },
