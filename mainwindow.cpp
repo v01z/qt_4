@@ -303,7 +303,6 @@ void MainWindow::on_actionEnglish_triggered()
 void MainWindow::keyReleaseEvent(QKeyEvent *event)
 {
 
-//    for (const auto &elem : keys)
     bool weHaveThisKey{ false };
     int i{};
 
@@ -384,15 +383,6 @@ void MainWindow::on_actionKey_bindings_triggered()
 //    qDebug() << dialog.getNewBinding().second;
     //keys.at(dialog.getNewBinding().second) = dialog.getNewBinding().first;
 
-    //не захотел
-//    keys[dialog.getNewBinding().second] = dialog.getNewBinding().first;
-    int i = dialog.getNewBinding().second;
-    KeyBind tempkey = dialog.getNewBinding().first;
-    qDebug() << "***********************";
-    qDebug () << "int = " << i;
-    qDebug() << tempkey.key;
-    qDebug() << tempkey.mod1;
-    qDebug() << tempkey.mod2;
-
+    keys[dialog.getNewBinding().second] = dialog.getNewBinding().first;
 }
 
