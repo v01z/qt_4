@@ -76,7 +76,7 @@ void KeyBindDialog::updateInterface(int index) const
     }
 }
 
-void KeyBindDialog::on_cbAction_activated(const QString &arg1)
+void KeyBindDialog::on_cbAction_activated(const QString /*&arg1*/)
 {
     updateInterface(ui->cbAction->currentIndex());
 }

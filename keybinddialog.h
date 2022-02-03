@@ -24,7 +24,7 @@ public:
 private slots:
     void on_btnCancel_clicked();
 
-    void on_cbAction_activated(const QString &arg1);
+    void on_cbAction_activated(const QString);
 
     void on_btnOk_clicked();
 

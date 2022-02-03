@@ -11,7 +11,8 @@ const QString FILE_SPACE { QObject::tr("Файл ") };
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-      file(new QFile()), canSave(true)
+      file(new QFile()), canSave(true),
+      isModified(false)
 {
     //Warning: Do not change the order of pushing elements. It corresponds
     //vector 'actionsIndexes' (see keybinddialog.h). To avoid mismatches the
@@ -86,6 +87,7 @@ void MainWindow::on_actionOpen_triggered()
                     stream.readAll());
 
                  ui->actionClose->setEnabled(true);
+                 isModified = false;
                  ui->statusbar->showMessage(file->fileName());
              }
              else //!open
@@ -127,6 +129,7 @@ void MainWindow::on_actionOpen_read_only_mode_triggered()
                  disableSave(true);
 
                  ui->actionClose->setEnabled(true);
+                 isModified = false;
 
                  ui->statusbar->showMessage(FILE_SPACE + file->fileName() +
                     tr(" открыт в режиме \'только для чтения\'."));
@@ -160,6 +163,8 @@ void MainWindow::on_actionSave_triggered()
         on_actionSaveAs_triggered();
         ui->actionClose->setEnabled(true);
     }
+
+    isModified = false;
 }
 
 
@@ -199,13 +204,9 @@ void MainWindow::on_actionSaveAs_triggered()
 
 void MainWindow::on_actionExit_triggered()
 {
-   if (textModified)
+   if (isModified && canSave)
    {
-       /*
-        QMessageBox msgBox;
-        msgBox.setText(tr("Текст изменён."));
-        msgBox.setInformativeText(tr("Хотите его сохранить?"));
-        */
+
 
        QMessageBox msgBox(QMessageBox::Question,
                    tr("Текст изменён."),
@@ -217,7 +218,6 @@ void MainWindow::on_actionExit_triggered()
         msgBox.setButtonText(QMessageBox::Cancel, tr("Отмена"));
         msgBox.setButtonText(QMessageBox::Discard, tr("Выйти без сохранения"));
 
-//        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
         msgBox.setDefaultButton(QMessageBox::Save);
         int ret = msgBox.exec();
 
@@ -250,6 +250,7 @@ void MainWindow::on_actionHelp_triggered()
 
 
      ui->statusbar->showMessage(tr("Краткая справка показана."));
+     isModified = false;
 
 }
 
@@ -275,13 +276,11 @@ void MainWindow::disableSave(bool disableIt)
     {
         canSave = false;
         ui->actionSave->setEnabled(false);
-       // ui->actionSaveAs->setEnabled(false);
     }
     else
     {
         canSave = true;
         ui->actionSave->setEnabled(true);
-        //ui->actionSaveAs->setEnabled(true);
 
     }
 }
@@ -408,6 +407,8 @@ void MainWindow::on_actionKey_bindings_triggered()
 
 }
 
-
-
+void MainWindow::on_plainTextEdit_textChanged()
+{
+      isModified = true;
+}
 

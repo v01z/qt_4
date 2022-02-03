@@ -46,6 +46,8 @@ private slots:
     void on_actionKey_bindings_triggered();
 
 
+    void on_plainTextEdit_textChanged();
+
 private:
     Ui::MainWindow *ui;
     QFile *file;
@@ -55,6 +57,8 @@ private:
 
     QVector<KeyBind> keys;
     void actionChoosing(int);
+
+    bool isModified;
 
 protected:
     void keyReleaseEvent(QKeyEvent*) override;
