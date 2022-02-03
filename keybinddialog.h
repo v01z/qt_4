@@ -35,6 +35,9 @@ private:
 //    KeyBind *keyBind;
 };
 
+//Warning: The order should be the same as filling QVector
+//in MainWindow constructor. Later I will decide how to
+//manage it more properly.
 const QVector <QPair <int, QString> > actionsIndexes = {
     { 0, QObject::tr("Открыть") },
     { 1, QObject::tr("Русский") },

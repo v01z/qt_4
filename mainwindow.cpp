@@ -23,6 +23,10 @@ MainWindow::MainWindow(QWidget *parent)
     //keys.push_back((this->*on_actionOpen_triggered)());
 
 //    keys.push_back( { Qt::KeyboardModifier(Qt::ControlModifier & Qt::NoModifier), Qt::Key_O} );    // 0 - Open
+
+    //Warning: Do not change the order of pushing elements. It corresponds
+    //vector 'actionsIndexes' (see keybinddialog.h). In case to avoid mismatches
+    //the vector 'keys' has to be initialized from vector 'actionsIndexes' somehow.
     keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_O} );    // 0 - Open
     keys.push_back( { Qt::ControlModifier, Qt::ShiftModifier, Qt::Key_R} ); // 1 - Rus
     keys.push_back( { Qt::ControlModifier, Qt::NoModifier, Qt::Key_R} );	// 2 - read-only
