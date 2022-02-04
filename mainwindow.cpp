@@ -290,14 +290,9 @@ void MainWindow::disableSave(bool disableIt)
 
 void MainWindow::on_actionRussian_triggered()
 {
-//         QTranslator translator;
 
- //        QString lang { "./QtLanguage_ru" };
-
-         //translator.load(lang);
          translator->load(langRus);
 
-         //QApplication::installTranslator(&translator);
          QApplication::installTranslator(translator);
 
          ui->actionEnglish->setChecked(false);
@@ -310,14 +305,9 @@ void MainWindow::on_actionRussian_triggered()
 
 void MainWindow::on_actionEnglish_triggered()
 {
-        // QTranslator translator;
 
-//         QString lang { "./QtLanguage_en" };
-
-         //translator.load(lang);
          translator->load(langEng);
 
-         //QApplication::installTranslator(&translator);
          QApplication::installTranslator(translator);
 
          ui->actionEnglish->setChecked(true);
@@ -405,9 +395,6 @@ void MainWindow::on_actionKey_bindings_triggered()
     KeyBindDialog dialog(&keys);
     dialog.setModal(true);
     dialog.exec();
-
-    //error: passing 'const KeyBind' as 'this' argument discards qualifiers [-fpermissive]
-//    keys.at(dialog.getNewBinding().second) = dialog.getNewBinding().first;
 
     keys[dialog.getNewBinding().second] = dialog.getNewBinding().first;
 

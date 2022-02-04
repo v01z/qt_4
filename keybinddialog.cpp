@@ -14,6 +14,24 @@ KeyBindDialog::KeyBindDialog(QVector<KeyBind> *iKeysVec) :
 {
     keyBind = iKeysVec;
 
+    //Warning: The order should be the same as filling QVector
+    //in MainWindow constructor. Later I will decide how to
+    //manage it more properly.
+    actionsIndexes.push_back({ 0, QObject::tr("Открыть") });
+    actionsIndexes.push_back({ 1, QObject::tr("Русский") });
+    actionsIndexes.push_back({ 2, QObject::tr("Открыть для чтения") });
+    actionsIndexes.push_back({ 3, QObject::tr("Закрыть") });
+    actionsIndexes.push_back({ 4, QObject::tr("Сохранить как") });
+    actionsIndexes.push_back({ 5, QObject::tr("Сохранить") });
+    actionsIndexes.push_back({ 6, QObject::tr("Выход") });
+    actionsIndexes.push_back({ 7, QObject::tr("Английский") });
+    actionsIndexes.push_back({ 8, QObject::tr("Помощь") });
+    actionsIndexes.push_back({ 9, QObject::tr("Забиндить клавиши") });
+
+    modsTranslator.push_back({ Qt::NoModifier, tr("Пусто") });
+    modsTranslator.push_back({ Qt::ControlModifier, "Cntrl" });
+    modsTranslator.push_back({ Qt::ShiftModifier, "Shift" });
+
     //Unite these four loops to one function in the future
     for (int i{}; i < actionsIndexes.size(); ++i)
         ui->cbAction->addItem(actionsIndexes[i].second);
