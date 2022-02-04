@@ -10,5 +10,8 @@ struct KeyBind {
     Qt::Key key;
 };
 
+const   QString langRus { "./QtLanguage_ru" };
+const   QString langEng { "./QtLanguage_en" };
+
 
 #endif // MAIN_H

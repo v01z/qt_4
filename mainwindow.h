@@ -60,6 +60,8 @@ private:
 
     bool isModified;
 
+    QTranslator *translator;
+
 protected:
     void keyReleaseEvent(QKeyEvent*) override;
 

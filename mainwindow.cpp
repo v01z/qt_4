@@ -12,7 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
       file(new QFile()), canSave(true),
-      isModified(false)
+      isModified(false),
+      translator{new QTranslator()}
 {
     //Warning: Do not change the order of pushing elements. It corresponds
     //vector 'actionsIndexes' (see keybinddialog.h). To avoid mismatches the
@@ -54,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete translator;
     if (file->isOpen())
         file->close();
     delete file;
@@ -288,13 +290,15 @@ void MainWindow::disableSave(bool disableIt)
 
 void MainWindow::on_actionRussian_triggered()
 {
-         QTranslator translator;
+//         QTranslator translator;
 
-         QString lang { "./QtLanguage_ru" };
+ //        QString lang { "./QtLanguage_ru" };
 
-         translator.load(lang);
+         //translator.load(lang);
+         translator->load(langRus);
 
-         QApplication::installTranslator(&translator);
+         //QApplication::installTranslator(&translator);
+         QApplication::installTranslator(translator);
 
          ui->actionEnglish->setChecked(false);
          ui->actionRussian->setChecked(true);
@@ -306,13 +310,15 @@ void MainWindow::on_actionRussian_triggered()
 
 void MainWindow::on_actionEnglish_triggered()
 {
-         QTranslator translator;
+        // QTranslator translator;
 
-         QString lang { "./QtLanguage_en" };
+//         QString lang { "./QtLanguage_en" };
 
-         translator.load(lang);
+         //translator.load(lang);
+         translator->load(langEng);
 
-         QApplication::installTranslator(&translator);
+         //QApplication::installTranslator(&translator);
+         QApplication::installTranslator(translator);
 
          ui->actionEnglish->setChecked(true);
          ui->actionRussian->setChecked(false);
