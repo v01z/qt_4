@@ -51,6 +51,7 @@ const QVector <QPair <int, QString> > actionsIndexes = {
 
 };
 
+/*
 //Пока тут будет три модификатора, потом можно дополнить
 const QVector<QPair<Qt::KeyboardModifier, QString>> modsTranslator  {
     { Qt::NoModifier, QObject::tr("Пусто") },
@@ -62,19 +63,17 @@ const QVector<QPair<Qt::KeyboardModifier, QString>> modsTranslator  {
 static const char *greeting_strings[] = {
         QT_TR_NOOP("Пусто"),
     };
-
 const QVector<QPair<Qt::KeyboardModifier, QString>> modsTranslator  {
     { Qt::NoModifier, QObject::tr(greeting_strings[0]) },
     { Qt::ControlModifier, "Cntrl" },
     { Qt::ShiftModifier, "Shift" }
 };
-
+*/
 const QVector<QPair<Qt::KeyboardModifier, QString>> modsTranslator  {
     { Qt::NoModifier, QObject::tr(QT_TR_NOOP("Пусто")) },
     { Qt::ControlModifier, "Cntrl" },
     { Qt::ShiftModifier, "Shift" }
 };
-*/
 
 //Тут тоже пока не вся клава
 const QVector<QPair<Qt::Key, QString>> keyTranslator  {
